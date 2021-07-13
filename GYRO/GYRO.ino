@@ -83,58 +83,78 @@ String getMPUAccelerationRight() {
   sensors_event_t a, g, temp;
   mpu_right.getEvent(&a, &g, &temp);
 
-  if(a.acceleration.x < 6 && a.acceleration.x > 1) {
-    if(a.acceleration.y < -8 && a.acceleration.y > -11) {
-      if(a.acceleration.z < 2 && a.acceleration.z > -2) {
-        return "seitwärts";
-      }
-    }
-  }
+  Serial.print("X-rechts:");
+  Serial.print(a.acceleration.x);
+  Serial.print("Y-rechts:");
+  Serial.print(a.acceleration.y);
+  Serial.print("Z-rechts:");
+  Serial.print(a.acceleration.z);
+  Serial.println("");
 
-  if(a.acceleration.x < -7 && a.acceleration.x > -10) {
-    if(a.acceleration.y < 0 && a.acceleration.y > -6) {
-      if(a.acceleration.z < 5 && a.acceleration.z > -2) {
-        return "oben";
-      }
-    }
-  }
-
-  if(a.acceleration.x < 2 && a.acceleration.x > -3) {
+  if(a.acceleration.x < 3 && a.acceleration.x > -1) {
     if(a.acceleration.y < -8 && a.acceleration.y > -11) {
       if(a.acceleration.z < 1 && a.acceleration.z > -3) {
-        return "gesicht";
+        return "rechts seitwärts";
       }
     }
   }
+
+  if(a.acceleration.x < 11 && a.acceleration.x > 7) {
+    if(a.acceleration.y < -1 && a.acceleration.y > -7) {
+      if(a.acceleration.z < 6 && a.acceleration.z > 0) {
+        return "rechts oben";
+      }
+    }
+  }
+
+  if(a.acceleration.x < 8 && a.acceleration.x > 4) {
+    if(a.acceleration.y < -6 && a.acceleration.y > -10) {
+      if(a.acceleration.z < 5 && a.acceleration.z > 1) {
+        return "rechts gesicht";
+      }
+    }
+  }
+
+  delay(1000);
 }
 
 String getMPUAccelerationLeft() {
   sensors_event_t a, g, temp;
   mpu_left.getEvent(&a, &g, &temp);
 
-  if(a.acceleration.x < 4 && a.acceleration.x > -2) {
-    if(a.acceleration.y < 11 && a.acceleration.y > 8) {
-      if(a.acceleration.z < 3 && a.acceleration.z > -1) {
-        return "seitwärts";
-      }
-    }
-  }
+  Serial.print("X-links:");
+  Serial.print(a.acceleration.x);
+  Serial.print("Y-links:");
+  Serial.print(a.acceleration.y);
+  Serial.print("Z-links:");
+  Serial.print(a.acceleration.z);
+  Serial.println("");
 
-  if(a.acceleration.x < -6 && a.acceleration.x > -10) {
-    if(a.acceleration.y < 5 && a.acceleration.y > 0) {
-      if(a.acceleration.z < 6 && a.acceleration.z > -2) {
-        return "oben";
-      }
-    }
-  }
-
-  if(a.acceleration.x < -3 && a.acceleration.x > -7) {
+  if(a.acceleration.x < 2 && a.acceleration.x > -4) {
     if(a.acceleration.y < 10 && a.acceleration.y > 6) {
-      if(a.acceleration.z < 1 && a.acceleration.z > -4) {
-        return "gesicht";
+      if(a.acceleration.z < 0 && a.acceleration.z > -5) {
+        return "links seitwärts";
       }
     }
   }
+
+  if(a.acceleration.x < 11 && a.acceleration.x > 7) {
+    if(a.acceleration.y < 5 && a.acceleration.y > 0) {
+      if(a.acceleration.z < 5 && a.acceleration.z > -2) {
+        return "links oben";
+      }
+    }
+  }
+
+  if(a.acceleration.x < 10 && a.acceleration.x > 6) {
+    if(a.acceleration.y < 8 && a.acceleration.y > 4) {
+      if(a.acceleration.z < 5 && a.acceleration.z > -1) {
+        return "links gesicht";
+      }
+    }
+  }
+
+  delay(1000);
 }
 
 void RGB_color(int red_value, int green_value, int blue_value) {
